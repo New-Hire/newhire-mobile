@@ -1,27 +1,31 @@
 import 'vant/lib/index.css'
 
+import { Rate } from 'vant'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { Slider } from 'vant'
 
 import {
+  ActionSheet,
   Button,
   Cell,
   CellGroup,
   Col,
+  Field,
+  Form,
   Grid,
   GridItem,
   Icon,
   List,
   NavBar,
   Row,
+  SwipeCell,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  Toast,
+  Image as VanImage
 } from 'vant'
-import { ActionSheet } from 'vant'
-import { Image as VanImage } from 'vant'
-import { Form, Field } from 'vant'
-import { Toast } from 'vant'
 
 const app = createApp(App)
 
@@ -42,6 +46,9 @@ app.use(VanImage)
 app.use(Form)
 app.use(Field)
 app.use(Toast)
+app.use(SwipeCell)
+app.use(Rate)
+app.use(Slider)
 
 app.use(router)
 app.mount('#app')

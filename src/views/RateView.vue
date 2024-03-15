@@ -5,7 +5,7 @@
     finished-text="没有更多了"
     @load="onLoad"
   >
-    <van-cell v-for="user in users" :key="user.id" :to="`/users/${user.id}`">
+    <van-cell v-for="user in users" :key="user.id" :to="`/users/${user.id}/rate`">
       <template #title> {{ user.name }} </template>
     </van-cell>
   </van-list>

@@ -36,8 +36,9 @@ export default {
     const username = ref('')
     const password = ref('')
     const onSubmit = async (values) => {
-      const token = await AuthService.getAuthToken(values.username, values.password)
-      Store.setToken(token)
+      const data = await AuthService.getAuthToken(values.username, values.password)
+      Store.setToken(data.token)
+      Store.setAuthUser({ userId: data.userId, role: data.role })
       router.push('/')
     }
 

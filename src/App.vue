@@ -1,12 +1,20 @@
 <script>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import Store from './store'
 export default {
   setup() {
+    const isHr = ref(false)
     const active = ref(0)
     const onClickLeft = () => history.back()
+
+    watch(Store.getAuthUser(), () => {
+      isHr.value = Store.isHr()
+    })
+
     return {
       active,
-      onClickLeft
+      onClickLeft,
+      isHr
     }
   }
 }
@@ -22,6 +30,9 @@ export default {
       <van-tabbar-item to="/" icon="home-o">人员</van-tabbar-item>
       <van-tabbar-item to="/company" icon="search">企业</van-tabbar-item>
       <van-tabbar-item to="/rate" icon="setting-o">评分</van-tabbar-item>
+      <van-tabbar-item v-show="isHr" to="/company/candidates" icon="setting-o"
+        >审批</van-tabbar-item
+      >
     </van-tabbar>
   </footer>
 </template>

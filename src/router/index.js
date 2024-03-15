@@ -7,6 +7,7 @@ import LoginView from '../views/LoginView.vue'
 import RateUserView from '../views/RateUserView.vue'
 import RateView from '../views/RateView.vue'
 import UserRegisterCompanyView from '../views/UserRegisterCompanyView.vue'
+import CompanyCandidateView from '../views/CompanyCandidateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,6 +41,11 @@ const router = createRouter({
       path: '/user/register_companies',
       name: 'userRegisterCompanyView',
       component: UserRegisterCompanyView
+    },
+    {
+      path: '/company/candidates',
+      name: 'companyCandidateView',
+      component: CompanyCandidateView
     },
     {
       path: '/login',
