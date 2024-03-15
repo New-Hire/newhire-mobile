@@ -20,6 +20,8 @@ import {
 } from 'vant'
 import { ActionSheet } from 'vant'
 import { Image as VanImage } from 'vant'
+import { Form, Field } from 'vant'
+import { Toast } from 'vant'
 
 const app = createApp(App)
 
@@ -37,6 +39,9 @@ app.use(Icon)
 app.use(List)
 app.use(ActionSheet)
 app.use(VanImage)
+app.use(Form)
+app.use(Field)
+app.use(Toast)
 
 app.use(router)
 app.mount('#app')

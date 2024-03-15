@@ -3,14 +3,18 @@ import { ref } from 'vue'
 export default {
   setup() {
     const active = ref(0)
-    return { active }
+    const onClickLeft = () => history.back()
+    return {
+      active,
+      onClickLeft
+    }
   }
 }
 </script>
 
 <template>
   <header>
-    <van-nav-bar title="九品中正" />
+    <van-nav-bar title="九品中正" left-text="返回" left-arrow @click-left="onClickLeft" />
   </header>
   <RouterView />
   <footer>

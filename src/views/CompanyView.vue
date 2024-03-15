@@ -5,32 +5,45 @@
     finished-text="没有更多了"
     @load="onLoad"
   >
-    <van-cell v-for="item in list" :key="item" :to="`/companies/${item}`">
-      <template #title> 公司{{ item }} </template>
+    <van-cell v-for="company in companies" :key="company.id" :to="`/companies/${company.id}`">
+      <template #title> {{ company.name }} </template>
+      <template #value> {{ `${company.province}/${company.city}` }} </template>
+      <template #label> {{ company.desc }} </template>
     </van-cell>
   </van-list>
 </template>
 
 <script>
 import { ref } from 'vue'
+import CompanyService from '../services/CompanyService'
 
 export default {
   setup() {
-    const list = ref([])
+    const companies = ref([])
     const loading = ref(false)
     const finished = ref(false)
+    let pageNumber = 1
+    const pageSize = 10
 
     const onLoad = () => {
       // 异步更新数据
-      for (let i = 0; i < 10; i++) {
-        list.value.push(list.value.length + 1)
-      }
-      loading.value = false
-      finished.value = true
+      loading.value = true
+      CompanyService.getCompanies({ pageNumber, pageSize }).then((res) => {
+        if (res.totalCount <= 10) {
+          finished.value = true
+        }
+        if (res.content.length === 0) {
+          finished.value = true
+        } else {
+          companies.value.push(...res.content)
+          pageNumber++
+        }
+        loading.value = false
+      })
     }
 
     return {
-      list,
+      companies,
       onLoad,
       loading,
       finished
