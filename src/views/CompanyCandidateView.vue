@@ -4,6 +4,7 @@
       :border="false"
       :title="candidate.user.name"
       :value="enumData.getValue(candidate.status)"
+      :label="`分数：${candidate.score}`"
     />
     <template #right>
       <van-button square type="primary" text="邀请" @click="invite(candidate.userId)" />
